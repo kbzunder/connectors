@@ -55,7 +55,7 @@ if __name__ == '__main__':
 
     def get_data(date,json,headers,url):
         if 'date_from' in json:
-            json["date_from"]) = date
+            json["date_from"] = date
         elif 'from' in json['date']:
             json['date']['from'] = date + 'T00:00:00.000Z'
 
