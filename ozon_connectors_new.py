@@ -60,8 +60,8 @@ if __name__ == '__main__':
             json['date']['from'] = date + 'T00:00:00.000Z'
 
         req = requests.post(url, headers=headers, json=json)
-        if req_1.status_code == 200:
-            reutrn req.json()
+        if req.status_code == 200:
+            return req.json()
         else:
             raise ValueError
 
@@ -75,7 +75,7 @@ if __name__ == '__main__':
 
     def get_compensation(params):
         j = get_data(params)
-        data_comp =    pd.DataFrame.from_dict(j_2).T.reset_index(drop=True)
+        data_comp =    pd.DataFrame.from_dict(j).T.reset_index(drop=True)
         data_comp['Cost'] = abs(data_comp.drop('accruals_for_sale', axis=1).sum(axis=1))
         data_comp['date'] = date
         data_comp['source'] = 'partner.ozon.ru'
