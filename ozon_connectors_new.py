@@ -1,17 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import requests
-import json
 import pandas as pd
-import pandas_gbq
-import google.auth
 from google.oauth2 import service_account
-from datetime import datetime, timedelta
-import sys
-import getopt
 from datetime import datetime
-import pandas as pd
-from sqlalchemy import create_engine 
+from datetime import datetime
 
 if __name__ == '__main__':
     credentials = service_account.Credentials.from_service_account_file(
