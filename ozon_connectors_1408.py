@@ -1,10 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+
 import requests
 import pandas as pd
 from google.oauth2 import service_account
-from datetime import datetime
-from datetime import datetime
+import datetime as dt
+from datetime import timedelta
 
 if __name__ == '__main__':
     credentials = service_account.Credentials.from_service_account_file(

@@ -3,34 +3,10 @@
 import requests
 import pandas as pd
 from google.oauth2 import service_account
-import datetime as dt
-from datetime import timedelta
-import sys
-import getopt
+from datetime import datetime
+from datetime import datetime
 
 if __name__ == '__main__':
-
-    unixOptions = 'sdt:edt:'
-    gnuOptions = ['start_dt=', 'end_dt=']
-    
-    fullCmdArguments = sys.argv
-    argumentList = fullCmdArguments[1:] #excluding script name
-    
-    try:
-        arguments, values = getopt.getopt(argumentList, unixOptions, gnuOptions)
-    except:
-        print ('Error')
-        sys.exit(2)
-    
-    start_dt = ''
-    end_dt = ''
-    for currentArgument, currentValue in arguments:
-        if currentArgument in ('-sdt', '--start_dt'):
-            start_dt = currentValue
-        elif currentArgument in ('-edt', '--end_dt'):
-            end_dt = currentValue
-
-
     credentials = service_account.Credentials.from_service_account_file(
     '/Users/jullia/Downloads/dogeat-321311-0d748e5d5c69.json'
     )
@@ -128,13 +104,14 @@ if __name__ == '__main__':
 
     def date_range_datetime(start, end):
         delta = end - start
-        days_dt  = [start + dt.timedelta(days=i) for i in range(delta.days + 1)]
+        days_dt  = [start + datetime.timedelta(days=i) for i in range(delta.days + 1)]
         return days_dt
 
+
     def date_range_string(start, end):
-        start  = dt.datetime.strptime(start, '%Y-%m-%d').date()
-        end = dt.datetime.strptime(end, '%Y-%m-%d').date()
-        return date_range_datetime(start, end)
+        start  = datetime.strptime(start, '%Y-%m-%d').date()
+        end = datetime.strptime(end, '%Y-%m-%d').date()
+        date_range_datetime(start, end)
 
     def data_to_gbq(start, end):
 
@@ -160,4 +137,3 @@ if __name__ == '__main__':
                 )
 
 
-data_to_gbq(start_dt, end_dt)
