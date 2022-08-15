@@ -105,13 +105,13 @@ if __name__ == '__main__':
 
     def date_range_datetime(start, end):
         delta = end - start
-        days_dt  = [start + datetime.timedelta(days=i) for i in range(delta.days + 1)]
+        days_dt  = [start + dt.timedelta(days=i) for i in range(delta.days + 1)]
         return days_dt
 
 
     def date_range_string(start, end):
-        start  = datetime.strptime(start, '%Y-%m-%d').date()
-        end = datetime.strptime(end, '%Y-%m-%d').date()
+        start  = dt.strptime(start, '%Y-%m-%d').date()
+        end = dt.strptime(end, '%Y-%m-%d').date()
         date_range_datetime(start, end)
 
     def data_to_gbq(start, end):
